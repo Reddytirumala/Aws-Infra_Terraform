@@ -1,8 +1,8 @@
+
 provider "aws" {
   region     = var.vpc_region
  
 }
-
 resource "aws_vpc" "vpc" {
   cidr_block       = var.CIDR_vpc
   tags = {
