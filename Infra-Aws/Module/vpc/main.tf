@@ -123,3 +123,22 @@ resource "aws_route_table_association" "private-1c" {
   route_table_id = aws_route_table.private-route.id
 }
 */
+resource "aws_security_group" "ec2_sg" {
+  name        = "ec2-security-group"
+  description = "Security group for EC2 instances"
+  vpc_id      = aws_vpc.vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}

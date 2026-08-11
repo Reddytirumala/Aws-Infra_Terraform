@@ -1,31 +1,3 @@
-#---------Aws-VPC-----------------------
-variable "vpc_name" {
-  type = string
-}
-
-variable "CIDR_vpc" {
-  type = string
-}
-variable "vpc_region" {
-  type = string
-}
-
-#------- S3 Bucket Variables
-
-variable "s3_bucket" {
-  type        = string
-  description = "s3 bucket name"
-}
-variable "Environment" {
-  type = string
-}
-
-variable "aws_region" {
-  type        = string
-  description = "aws Region"
-}
-
-#----------AWS-EC2-----------------------
 variable "ami_id" {
   description = "AMI ID for the EC2 instance"
   type        = string
@@ -40,14 +12,14 @@ variable "key_name" {
   description = "Key pair name for SSH access"
   type        = string
 }
-/*variable "subnet_id" {
+variable "subnet_id" {
   description = "ID of the subnet where the EC2 instance will be launched"
   type        = string
-}*/
-/*variable "security_group_id" {
-  description = "ID of the security group to associate with the EC2 instance"
-  type        = string
-}*/
+}
+variable "security_group_ids" {
+  description = "List of security group IDs to associate with the EC2 instance"
+  type        = list(string)
+}
 /*variable "private_ip" {
   description = "Private IP address for the EC2 instance"
   type        = string
@@ -55,17 +27,31 @@ variable "key_name" {
 variable "associate_public_ip_address" {
   description = "Whether to associate a public IP address with the EC2 instance"
   type        = bool
+  default     = true
 }
 variable "instance_name" {
   description = "Name for the EC2 instance"
   type        = string
 }
+variable "Environment" {
+  description = "Environment for the EC2 instance"
+  type        = string
+}
 
+variable "region" {
+  description = "AWS region for the EC2 instance"
+  type        = string
+}
 
 #-----------------SG-Variable-----------------
-
+/*
 variable "ec2_sg_name" {
   description = "Name for the EC2 security group"
   type        = string
 }
 
+variable "vpc_id" {
+  description = "ID of the VPC where the security group will be created"
+  type        = string
+}
+*/
